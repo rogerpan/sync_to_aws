@@ -1,0 +1,2 @@
+#!/bin/bash
+find /data/mssql/ -type f -mtime +2 -delete
