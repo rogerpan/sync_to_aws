@@ -35,21 +35,10 @@ class S3Backupfile:
             return False
 
     def list_all_s3_objects(self):
-        """
-        Check if s3 list files on S3 bucket.
-        return:
-             List of first 1000 files from bucket
-             Exception  communication error
-        """
-
         filelist = []
-        total_files = 0
         conn = boto3.client('s3')
         for key in conn.list_objects(Bucket=self.bucket_name)['Contents']:
             filelist.append(key['Key'])
-            total_files += 1
-        i = {'Total files' :total_files}
-        filelist.append(i)
         return filelist
 
     def check_s3_object_exist(self):
@@ -72,3 +61,4 @@ class S3Backupfile:
         else:
             exists = True
         return exists
+        

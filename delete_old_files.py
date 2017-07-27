@@ -6,7 +6,7 @@ import s3backupfile
 
 del_context = {'walk_base_dir': '/data/mssql',
                'extension': ('.bak', '.BAK'),
-               'retention_hours': 60,
+               'retention_hours': 120,
                'bucket_name': 'datg-databases-backup',
                'backup_base_dir': '/data/'}
 

@@ -12,7 +12,8 @@ S3_context = {'walk_base_dir': '/data/mssql/AM-NCKM-DSVM001/Program Files/Micros
 
 
 
-if __name__ == '__main__':
+if __n
+    ame__ == '__main__':
     try:
         s3file = s3backupfile.S3Backupfile(
             S3_context['bucket_name'],
