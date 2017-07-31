@@ -37,9 +37,24 @@ class S3Backupfile:
     def list_all_s3_objects(self):
         filelist = []
         conn = boto3.client('s3')
-        for key in conn.list_objects(Bucket=self.bucket_name)['Contents']:
+        for key in conn.list_objects(Bucket=self.bucket_name,Prefix=self.backup_base_dir )['Contents']:
             filelist.append(key['Key'])
         return filelist
+
+    def list_s3_objects(self):
+        filelist = []
+
+        s3_client = boto3.client('s3')
+        response = s3_client.list_objects(
+            Bucket=self.bucket_name,
+#            Prefix=self.backup_base_dir
+        )
+
+        # Loop through each file
+        for file in response['Contents']:
+            # Get the file name
+            name = file['Key'].rsplit('/', 1)
+            print(name)
 
     def check_s3_object_exist(self):
         """
